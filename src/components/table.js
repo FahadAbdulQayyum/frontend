@@ -59,20 +59,6 @@ const Table = ({ name, setName,
         setAbout(table[i].about)
         setUpdate(true)
         setIndex(i)
-
-        //     try {
-        //         const res = axios.put(`http://localhost:4000/api/v1/task/${table[i]._id}`, {
-        //             headers: {
-        //                 "Content-Type": "application/json",
-        //             },
-        //             withCredentials: true,
-        //         })
-        //         console.log('res', res)
-        //         message.success('Updated Successfully')
-        //     } catch (error) {
-        //         message.error('Error while updating')
-        //         console.log(error)
-        //     }
     }
 
     const deleteFunc = async i => {
@@ -130,38 +116,6 @@ const Table = ({ name, setName,
                             </td>
                         </tr>
                     )}
-                    {/* <tr>
-                        <th scope="row">1</th>
-                        <td>Fahad</td>
-                        <td>Garden West</td>
-                        <td>03232846250</td>
-                        <td>Image Uploaded</td>
-                        <td>About Fahad</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Ahmed</td>
-                        <td>Garden West</td>
-                        <td>03232846250</td>
-                        <td>Image Uploaded</td>
-                        <td>About Ahmed</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Asadullah</td>
-                        <td>Garden West</td>
-                        <td>03232846250</td>
-                        <td>Image Uploaded</td>
-                        <td>About Asadullah</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Aftab</td>
-                        <td>Malir</td>
-                        <td>03232846250</td>
-                        <td>Image Uploaded</td>
-                        <td>About Aftab</td>
-                    </tr> */}
                 </tbody>
             </table>
         </div>

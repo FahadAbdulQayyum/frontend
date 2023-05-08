@@ -9,7 +9,6 @@ const Sign = () => {
 
     const { isAuthenticated, setIsAuthenticated } = useContext(Context)
     const { user, setUser } = useContext(Context)
-    const { userId, setUserId } = useContext(Context)
 
     const onFinish = async (values) => {
 
@@ -24,10 +23,7 @@ const Sign = () => {
             }
             );
             console.log('res.dataaaaaaaaaaaaaa', res.data)
-            // console.log('ressss', res.data.user._id)
-            // console.log('userId', userId)
             localStorage.setItem('userData', JSON.stringify(res?.data?.user))
-            // setUserId(res?.data?.user)
             console.log('atk');
             if (res.data.success) {
                 setIsAuthenticated(true)
@@ -40,7 +36,6 @@ const Sign = () => {
 
         } catch (e) {
             setIsAuthenticated(false)
-            // alert(e)
             message.error(e)
         }
     };

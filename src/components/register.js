@@ -31,7 +31,6 @@ const Register = () => {
 
         } catch (e) {
             setIsAuthenticated(false)
-            // alert(e)
             message.warning(e)
         }
     };
