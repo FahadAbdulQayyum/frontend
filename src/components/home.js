@@ -14,7 +14,6 @@ const Home = () => {
     const { userId, setUserId } = useContext(Context)
     const { task, setTask } = useContext(Context)
     const data = useContext(Context)
-    // console.log(isAuthenticated, setIsAuthenticated);
     console.log('data', data);
     console.log('isAuth', isAuthenticated);
 
@@ -25,26 +24,8 @@ const Home = () => {
     const [about, setAbout] = useState('')
     const [update, setUpdate] = useState(false)
     const [index, setIndex] = useState()
-    // const [table, setTable] = useState([
-    //     {
-    //         name: 'Fahad',
-    //         address: 'Garden West',
-    //         phone: '03232846250',
-    //         img: 'google.com',
-    //         about: 'Fahad is coincidence name'
-    //     },
-    //     {
-    //         name: 'Aftab',
-    //         address: 'Male',
-    //         phone: '03232846250',
-    //         img: 'google.com',
-    //         about: 'Aftab is my High School friend.'
-    //     },
-    // ])
-
     const [table, setTable] = useState()
 
-    // const [table, setTable] = useState([task])
 
     useEffect(() => {
         dataRender();
@@ -128,38 +109,8 @@ const Home = () => {
         console.log('obj', obj);
     }
 
-    // const updateFunc = i => {
-    //     setName(table[i].name)
-    //     setAddress(table[i].address)
-    //     setPhone(table[i].phone)
-    //     setAbout(table[i].about)
-    //     setUpdate(true)
-    //     setIndex(i)
-    // }
-
     const onUpdate = e => {
         e.preventDefault();
-        // let obj = {
-        //     name: name,
-        //     address: address,
-        //     phone: phone,
-        //     img: img,
-        //     about: about
-        // }
-        // table.push(obj)
-        // setTable(...[table])
-        // setName('')
-        // setAddress('')
-        // setPhone('')
-        // setImg('')
-        // setAbout('')
-        // console.log('obj', obj);
-
-        // table[index].name = name
-        // table[index].address = address
-        // table[index].phone = phone
-        // table[index].about = about
-        // setTable(...[table])
         let objUpd = {
             name: name,
             address: address,
@@ -167,10 +118,6 @@ const Home = () => {
             img: img,
             about: about
         }
-
-        // console.log('table[index]._id', table[index]._id)
-        console.log('table[index]._id', table[index])
-        // console.log('table[index]._id', table)
 
         try {
             const res = axios.put(`http://localhost:4000/api/v1/task/${table[index]._id}`, objUpd, {
@@ -186,7 +133,6 @@ const Home = () => {
             console.log(error)
         }
         table[index] = objUpd
-        // setTable(...[table])
         setName('')
         setAddress('')
         setPhone({})
@@ -216,9 +162,7 @@ const Home = () => {
         >
             <div className='div'>
                 <ul>
-                    {/* <h4>Welcome, {`${ userData.name }`}</h4> */}
                     <h4>Welcome, {`${JSON.parse(localStorage.getItem('userData'))?.name}`}</h4>
-                    {/* <h4>Welcome, {user.name}</h4> */}
                     {!isAuthenticated ? <li>
                         <Link to={'/login'}>Login</Link>
                     </li> :
@@ -260,34 +204,6 @@ const Home = () => {
                 index={index} setIndex={setIndex}
                 table={table} setTable={setTable}
             />
-            {/* <table className="table">
-                <thead className="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Phone Number</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">About</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {table.map((v, i) =>
-                        <tr key={i}>
-                            <th scope='row'>{i + 1}</th>
-                            <td>{v.name}</td>
-                            <td>{v.address}</td>
-                            <td>{v.phone}</td>
-                            <td>{v.img}</td>
-                            <td>{v.about}</td>
-                            <td>
-                                <button onClick={() => updateFunc(i)}>Update</button>
-                            </td>
-                        </tr>
-                    )}
-                </tbody>
-            </table> */}
         </div >
     )
 }

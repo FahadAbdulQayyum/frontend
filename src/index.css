@@ -14,7 +14,6 @@
 }
 
 .div ul li{
-  /* margin: 0 5px; */
   margin: 10px 5px;
   color: white;
   border: 1px solid;
@@ -29,7 +28,6 @@
 
 .btn.tbl{
   background-color: tomato;
-  /* color: black; */
   color: white;
   font-weight: bold;
   transition: .2s;
@@ -46,17 +44,3 @@ span.line {
   justify-content: center;
   align-items: center;
 }
-
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
