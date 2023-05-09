@@ -75,6 +75,7 @@ const Home = () => {
         console.log('logged out')
         navigate('/login')
         setIsAuthenticated(false)
+        localStorage.removeItem('userData')
         localStorage.setItem('IsAuthenticated', false)
     }
 
