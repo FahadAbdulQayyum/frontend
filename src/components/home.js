@@ -38,14 +38,16 @@ const Home = () => {
         console.log('useEffect()', task)
         let auth = JSON.parse(localStorage.getItem('IsAuthenticated'))
         console.log('authhh, isAuth', auth, isAuthenticated)
+        console.log('!isAuth', !isAuthenticated)
         console.log('auth', auth)
         console.log('!auth', !auth)
         if (auth) {
             setIsAuthenticated(true)
         }
-        else if (!auth) {
-            setIsAuthenticated(false)
-        }
+        else
+            if (!auth) {
+                setIsAuthenticated(false)
+            }
         if (!isAuthenticated) return navigate('/login')
     }, [])
 
