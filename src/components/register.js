@@ -3,8 +3,7 @@ import axios from 'axios';
 import { Context } from '../index'
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-
+import { serverURL } from '../index';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -16,7 +15,7 @@ const Register = () => {
         let obj = { name: values.firstname, email: values.email, password: values.password }
         console.log('obj', obj);
         try {
-            const res = await axios.post('http://localhost:4000/api/v1/users/new', obj, {
+            const res = await axios.post(`${serverURL}/api/v1/users/new`, obj, {
                 headers: {
                     "Content-Type": "application/json",
                 },

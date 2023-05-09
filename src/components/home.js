@@ -4,6 +4,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Context } from '../index'
 import Table from './table'
 import { message } from 'antd'
+import { serverURL } from '../index'
 
 const Home = () => {
 
@@ -15,8 +16,8 @@ const Home = () => {
     const { task, setTask } = useContext(Context)
     const data = useContext(Context)
     console.log('data', data);
+    console.log('****', localStorage.getItem('userData') === "undefined");
     console.log('isAuth', isAuthenticated);
-
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
     const [phone, setPhone] = useState('')
@@ -30,16 +31,18 @@ const Home = () => {
     useEffect(() => {
         dataRender();
         userRender();
+        // if (localStorage.getItem('userData') === "undefined") {
+        //     console.log('undefinedddd');
+        //     localStorage.removeItem('userData')
+        // }
         console.log('useEffect()', task)
         let auth = localStorage.getItem('IsAuthenticated')
-        let userData = JSON.parse(localStorage.getItem('userData'))
         if (JSON.parse(auth)) return setIsAuthenticated(true)
         if (!isAuthenticated) return navigate('/login')
-
     }, [])
 
     const userRender = () => {
-        axios.get('http://localhost:4000/api/v1/users/me', {
+        axios.get(`${serverURL}/api/v1/users/me`, {
             withCredentials: true,
         }).then((res) => {
             console.log('dataaaaaaaaa', res)
@@ -54,7 +57,7 @@ const Home = () => {
 
     const dataRender = () => {
         console.log('reeee prior')
-        axios.get('http://localhost:4000/api/v1/task/my', {
+        axios.get(`${serverURL}/api/v1/task/my`, {
             headers: {
                 "Content-Type": "application/json",
             },
@@ -86,7 +89,7 @@ const Home = () => {
         }
 
         try {
-            const res = axios.post('http://localhost:4000/api/v1/task/new', obj, {
+            const res = axios.post(`${serverURL}/api/v1/task/new`, obj, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -120,7 +123,7 @@ const Home = () => {
         }
 
         try {
-            const res = axios.put(`http://localhost:4000/api/v1/task/${table[index]._id}`, objUpd, {
+            const res = axios.put(`${serverURL}/api/v1/task/${table[index]._id}`, objUpd, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -162,7 +165,8 @@ const Home = () => {
         >
             <div className='div'>
                 <ul>
-                    <h4>Welcome, {`${JSON.parse(localStorage.getItem('userData'))?.name}`}</h4>
+                    <h4>Welcome, {`${JSON.parse(localStorage.getItem('userData'))?.name} `}</h4>
+                    {/* <h4>Welcome, `${user.name}`</h4> */}
                     {!isAuthenticated ? <li>
                         <Link to={'/login'}>Login</Link>
                     </li> :

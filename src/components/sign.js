@@ -3,7 +3,7 @@ import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { Context } from '../index';
 import { useContext } from 'react';
-
+import { serverURL } from '../index';
 
 const Sign = () => {
 
@@ -15,7 +15,7 @@ const Sign = () => {
         console.log('Success:', values);
 
         try {
-            const res = await axios.post('http://localhost:4000/api/v1/users/login', values, {
+            const res = await axios.post(`${serverURL}/api/v1/users/login`, values, {
                 headers: {
                     "Content-Type": "application/json",
                 },

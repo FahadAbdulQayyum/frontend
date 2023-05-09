@@ -6,6 +6,8 @@ import { createContext } from 'react';
 
 export const Context = createContext({ isAuthenticated: false })
 
+export const serverURL = "https://better-fox-yoke.cyclic.app"
+
 const AppWrapper = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false)

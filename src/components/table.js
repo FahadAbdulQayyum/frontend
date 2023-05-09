@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { Context } from '../index'
 import axios from 'axios';
 import { message } from 'antd';
+import { serverURL } from '../index';
 
 const Table = ({ name, setName,
     address, setAddress,
@@ -65,7 +66,7 @@ const Table = ({ name, setName,
         table = table.filter(v => v._id !== table[i]._id)
         setTable(...[table])
         try {
-            const res = axios.delete(`http://localhost:4000/api/v1/task/${table[i]._id}`, {
+            const res = axios.delete(`${serverURL}/api/v1/task/${table[i]._id}`, {
                 headers: {
                     "Content-Type": "application/json",
                 },
