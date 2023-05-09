@@ -38,7 +38,7 @@ const Home = () => {
         console.log('useEffect()', task)
         let auth = localStorage.getItem('IsAuthenticated')
         if (JSON.parse(auth)) return setIsAuthenticated(true)
-        if (!isAuthenticated || localStorage.getItem('userData') === "undefined") return navigate('/login')
+        if (!isAuthenticated) return navigate('/login')
     }, [])
 
     const userRender = () => {
