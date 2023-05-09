@@ -36,7 +36,8 @@ const Home = () => {
         //     localStorage.removeItem('userData')
         // }
         console.log('useEffect()', task)
-        let auth = localStorage.getItem('IsAuthenticated')
+        let auth = JSON.parse(localStorage.getItem('IsAuthenticated'))
+        console.log('authhh', auth)
         if (JSON.parse(auth)) return setIsAuthenticated(true)
         if (!isAuthenticated) return navigate('/login')
     }, [])
